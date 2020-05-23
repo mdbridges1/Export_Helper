@@ -1,12 +1,17 @@
 # Patch Notes
 
+## Version 1.1
++ My First Hotfix? -Yay  :D
++ Fixed bug in OBJ export, where Object wouldn't go back to there original location.
++ Fixed versioning issue on v1.0 release.
+
+## Known Issues:
+None currently.
+
 ## Version 1.0
 + Release Ready.
 + Fixed having to be in object mode for the add on to function.
 + Ready to wider scrunity.
-
-## Known Issues:
-None currently.
 
 ## Version 0.94
 + Dedicated buttons added for each export type

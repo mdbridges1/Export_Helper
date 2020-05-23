@@ -78,11 +78,13 @@ class EXPORTGLB_OT_Operator(bpy.types.Operator):
         return {'FINISHED'}
 
 class EXPORTOBJ_OT_Operator(bpy.types.Operator):
+    
     bl_idname = "object.export_obj"
     bl_label = "Export OBJ"
     bl_description = "Export OBJ"
 
     def execute(self, context):
+
         obj_dir = '.\OBJ'
         blend_file_path = bpy.data.filepath
         directory = os.path.dirname(blend_file_path)
@@ -92,16 +94,6 @@ class EXPORTOBJ_OT_Operator(bpy.types.Operator):
             
         if os.path.isdir(directory + obj_dir) == False:
             os.makedirs(directory + obj_dir)   
-
-        i = 0
-        for i in range(len(bpy.context.scene.objects)):
-                
-            obj_name = bpy.context.scene.objects[i].name
-            target_file_obj = os.path.join(directory + obj_dir, obj_name)
-            bpy.data.objects[obj_name].select_set(True)
-
-            obj_loc = bpy.data.objects[obj_name].location.copy() # copy location
-            bpy.data.objects[obj_name].location = (0,0,0) # move object to world origin
 
         i = 0    
         for i in range(len(bpy.context.scene.objects)):
