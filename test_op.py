@@ -32,6 +32,9 @@ class EXPORT_OT_Operator(bpy.types.Operator):
             target_file_glb = os.path.join(directory + glb_dir, obj_name)
             bpy.data.objects[obj_name].select_set(True)
 
+            obj_loc = bpy.data.objects[obj_name].location.copy() # copy location
+            bpy.data.objects[obj_name].location = (0,0,0) # move object to world origin
+
             bpy.ops.export_scene.gltf(
                 export_format='GLB', 
                 ui_tab='GENERAL', 
@@ -72,17 +75,21 @@ class EXPORT_OT_Operator(bpy.types.Operator):
                 filepath=target_file_glb, 
                 check_existing=True, 
                 filter_glob="*.glb;*.gltf")
-                
+
+            bpy.data.objects[obj_name].location = obj_loc # set object back to it's original location
             bpy.ops.object.select_all(action='DESELECT')   
             i =+ 1
-
+            
         i = 0    
         for i in range(len(bpy.context.scene.objects)):
                 
             obj_name = bpy.context.scene.objects[i].name
             bpy.data.objects[obj_name].select_set(True)
             target_file_obj = os.path.join(directory + obj_dir, obj_name + '.obj')
-                
+
+            obj_loc = bpy.data.objects[obj_name].location.copy() # copy location
+            bpy.data.objects[obj_name].location = (0,0,0) # move object to world origin
+
             bpy.ops.export_scene.obj(
                 filepath=target_file_obj, 
                 check_existing=False, 
@@ -107,7 +114,8 @@ class EXPORT_OT_Operator(bpy.types.Operator):
                 path_mode='AUTO', 
                 axis_forward='-Z', 
                 axis_up='Y')
-                
+             
+            bpy.data.objects[obj_name].location = obj_loc # set object back to it's original location    
             bpy.ops.object.select_all(action='DESELECT')   
             i =+ 1
             
@@ -117,6 +125,9 @@ class EXPORT_OT_Operator(bpy.types.Operator):
             obj_name = bpy.context.scene.objects[i].name
             bpy.data.objects[obj_name].select_set(True)
             target_file_fbx = os.path.join(directory + fbx_dir, obj_name + '.fbx')
+
+            obj_loc = bpy.data.objects[obj_name].location.copy() # copy location
+            bpy.data.objects[obj_name].location = (0,0,0) # move object to world origin
             
             bpy.ops.export_scene.fbx(
                 filepath=target_file_fbx, 
@@ -156,6 +167,8 @@ class EXPORT_OT_Operator(bpy.types.Operator):
                 axis_forward='-Z', 
                 axis_up='Y')
             
+            bpy.data.objects[obj_name].location = obj_loc # set object back to it's original location
             bpy.ops.object.select_all(action='DESELECT')   
             i =+ 1
+            
         return {'FINISHED'}
