@@ -11,9 +11,13 @@ bl_info = {
 
 import bpy
 
-from . test_op import EXPORT_OT_Operator
-from . test_panel import EXPORT_PT_Panel
+from . export_helper_op import EXPORTGLB_OT_Operator, EXPORTOBJ_OT_Operator, EXPORTFBX_OT_Operator, EXPORTUNITYFBX_OT_Operator
+from . export_helper_panel import EXPORT_PT_Panel
 
-classes = (EXPORT_OT_Operator, EXPORT_PT_Panel)
+classes = (EXPORTGLB_OT_Operator, 
+    EXPORTOBJ_OT_Operator, 
+    EXPORTFBX_OT_Operator, 
+    EXPORTUNITYFBX_OT_Operator, 
+    EXPORT_PT_Panel)
 
 register, unregister = bpy.utils.register_classes_factory(classes)
