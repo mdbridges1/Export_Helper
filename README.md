@@ -1,5 +1,42 @@
 # Export Helper
 
+This add-on is designed to quickly export every object in your blend file to one of 4 formats:
++ GLB (glTF 2.0 binary)
++ OBJ
++ FBX
++ FBX for Unity
+
+I developed it as part of creating a series of modular game assets and quickly realised it would be quicker to write a little script to export it than do the work manually.  It has grown since then, becoming an add-on with multiple export options.
+
+If you have any feedback, either on its functionaly or codebase please let me know :D
+
+and if you want to see additional functionality or have a request for a different type of add on let me know as well.
+
+Mikey
+
+## Installation
+1. Download .zip file
+1. Open Blender
+1. Edit>Preferences Select the add-on tab
+1. Click Install
+1. Navigate to your download folder and select Export_Helper_1.0.zip
+1. Put a tick in the Export_Helper add on to enable it.
+
+## Using The Export Helper
+
+I recommend that you create a new scene containing specifically for what you want to export from your blend file.
+
+1. With the 3D viewport open up the side bar ( N Key )
+1. Click oin the "Export Helper" Tab
+1. Select which file type you wna to export
+1. In the same folder your .blend file is a new folder will be created with all of the objects in the scene exported and ready for use externally.
+
+**WARNINGS**
++ *There is no checking for existing files, any thing with the same name will be overwritten.*
+
++ *Unity Export - The export process will current apply scale and rotation transforms and will make Object_Data unique for all meshes in the scene*
+
+
 ## Attribution 4.0 International (CC BY 4.0)
 This is a human-readable summary of (and not a substitute for) the license.
 ## You are free to:

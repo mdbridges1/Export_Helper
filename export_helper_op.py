@@ -13,7 +13,8 @@ class EXPORTGLB_OT_Operator(bpy.types.Operator):
         glb_dir = '.\GLB'
         blend_file_path = bpy.data.filepath
         directory = os.path.dirname(blend_file_path)
-         
+        
+        bpy.ops.object.mode_set(mode = 'OBJECT')
         bpy.ops.object.select_all(action='DESELECT') 
      
         if os.path.isdir(directory + glb_dir) == False:
@@ -85,7 +86,8 @@ class EXPORTOBJ_OT_Operator(bpy.types.Operator):
         obj_dir = '.\OBJ'
         blend_file_path = bpy.data.filepath
         directory = os.path.dirname(blend_file_path)
-         
+        
+        bpy.ops.object.mode_set(mode = 'OBJECT')
         bpy.ops.object.select_all(action='DESELECT') 
             
         if os.path.isdir(directory + obj_dir) == False:
@@ -152,7 +154,8 @@ class EXPORTFBX_OT_Operator(bpy.types.Operator):
 
         blend_file_path = bpy.data.filepath
         directory = os.path.dirname(blend_file_path)
-         
+
+        bpy.ops.object.mode_set(mode = 'OBJECT') 
         bpy.ops.object.select_all(action='DESELECT') 
                    
         if os.path.isdir(directory + fbx_dir) == False:
@@ -223,7 +226,8 @@ class EXPORTUNITYFBX_OT_Operator(bpy.types.Operator):
 
         blend_file_path = bpy.data.filepath
         directory = os.path.dirname(blend_file_path)
-         
+        
+        bpy.ops.object.mode_set(mode = 'OBJECT')
         bpy.ops.object.select_all(action='DESELECT') 
 
         if os.path.isdir(directory + unity_dir) == False:
