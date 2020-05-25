@@ -6,9 +6,15 @@ This add-on is designed to quickly export every object in your blend file to one
 + FBX
 + FBX for Unity
 
+It is currently designed to take each object, and centre it in the scene and export, then places the model back. where it was in the scene.
+
+### Limitations
++ Currently doesn't work well with multi-object models with uncommon origins.
++ Not tested with animations at the moment.
+
 I developed it as part of creating a series of modular game assets and quickly realised it would be quicker to write a little script to export it than do the work manually.  It has grown since then, becoming an add-on with multiple export options.
 
-If you have any feedback, either on its functionaly or codebase please let me know :D
+If you have any feedback, either on its functionality or codebase please let me know :D
 
 and if you want to see additional functionality or have a request for a different type of add on let me know as well.
 

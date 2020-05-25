@@ -11,10 +11,11 @@ bl_info = {
 
 import bpy
 
-from . export_helper_op import EXPORTGLB_OT_Operator, EXPORTOBJ_OT_Operator, EXPORTFBX_OT_Operator, EXPORTUNITYFBX_OT_Operator
+from . export_helper_op import EXPORTOBJ_OT_Operator, EXPORTFBX_OT_Operator, EXPORTUNITYFBX_OT_Operator
+from . export_helper_gltf_op import EXPORTGLB_OT_Operator, EXPORTGLBALL_OT_Operator
 from . export_helper_panel import EXPORT_PT_Panel
 
-classes = (EXPORTGLB_OT_Operator, 
+classes = (EXPORTGLB_OT_Operator, EXPORTGLBALL_OT_Operator,
     EXPORTOBJ_OT_Operator, 
     EXPORTFBX_OT_Operator, 
     EXPORTUNITYFBX_OT_Operator, 

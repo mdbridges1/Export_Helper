@@ -10,14 +10,24 @@ class EXPORT_PT_Panel(bpy.types.Panel):
     def draw(self, context):
         layout = self.layout
 
-        row = layout.row()
-        row.operator('object.export_gltf', text = "Export GLB")
+        box = layout.box()
+        row = box.row()
+        row.label(text = "Center And Export")
+        row = box.row()
+        row.label(text = "All Objects Individually")
+        row = box.row()
+        row.operator('object.export_gltf', text = "Individual GLB")
+        row = box.row()
+        row.operator('object.export_obj', text = "Individual OBJ")
+        row = box.row()
+        row.operator('object.export_fbx', text = "Individual FBX")
+        row = box.row()
+        row.operator('object.export_unityfbx', text = "Individual FBX for Unity")
 
-        row = layout.row()
-        row.operator('object.export_obj', text = "Export OBJ")
-
-        row = layout.row()
-        row.operator('object.export_fbx', text = "Export FBX")
-
-        row = layout.row()
-        row.operator('object.export_unityfbx', text = "Export FBX for Unity")
+        box = layout.box()
+        row = box.row()
+        row.label(text = "Center And Export")
+        row = box.row()
+        row.label(text = "All Objects As One File")
+        row = box.row()
+        row.operator('object.export_gltf_all', text = "AIO GLB")

@@ -1,19 +1,24 @@
 # Patch Notes
 
-## Version 1.1
+## v1.2  
++ Added in the abilty to Export all objects in a scene as one file. (GLB only at the moment)
++ Tweaked UI to be distinct Sections
+
+## Potential Issues:
++ Currently doesn't work well with multi-object models with uncommon origins.
++ Not tested with animations at the moment.
+
+## Release v1.1
 + My First Hotfix? -Yay  :D
 + Fixed bug in OBJ export, where Object wouldn't go back to there original location.
 + Fixed versioning issue on v1.0 release.
 
-## Known Issues:
-None currently.
-
-## Version 1.0
+## Release v1.0
 + Release Ready.
 + Fixed having to be in object mode for the add on to function.
 + Ready to wider scrunity.
 
-## Version 0.94
+## v0.94
 + Dedicated buttons added for each export type
 
   + GLB
@@ -21,7 +26,7 @@ None currently.
   + FBX
   + FBX for Unity
 
-## Version 0.93
+## v0.93
 + Dedicated FBX Unity files now exported automagically.
 + Adjusted FBX eport settings to remove smoothing group warnings when importing into Unreal.
 + Tested in:
@@ -30,10 +35,10 @@ None currently.
   + Unity 2019.3.13f1
   + Unreal 4.25
 
-## Version 0.92 
+## v0.92 
 Added code to locate objects to world origin, Export, and put back to original location. 
 
-## Version 0.91 
+## v0.91 
 Code working and complete
 
 ### Fixed Issues:
