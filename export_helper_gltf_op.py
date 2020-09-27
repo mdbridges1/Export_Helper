@@ -112,7 +112,7 @@ class EXPORTGLBALL_OT_Operator(bpy.types.Operator):
             export_format='GLB', 
             ui_tab='GENERAL', 
             export_copyright="Michael Bridges", 
-            export_image_format='PNG', 
+            export_image_format='AUTO', 
             export_texture_dir="", 
             export_texcoords=True, 
             export_normals=True, 
