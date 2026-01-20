@@ -1,0 +1,24 @@
+schema_version = "1.0.0"
+
+id = "export_helper_pro"
+name = "Export Helper Pro"
+version = "2.0.0"
+tagline = "Batch export objects and collections to FBX, glTF, OBJ with engine presets"
+maintainer = "Michael Bridges <mdbridges1@gmail.com>"
+
+type = "add-on"
+blender_version_min = "4.2.0"
+
+website = "https://github.com/mdbridges1/Export_Helper"
+license = ["SPDX:MIT"]
+
+[build]
+paths_exclude_pattern = [
+    "__pycache__/",
+    "*.pyc",
+    ".git/",
+    ".gitignore",
+]
+
+# Optional: Add tags for discoverability in Blender's extension browser
+tags = ["Import-Export", "Pipeline", "Game Engine"]

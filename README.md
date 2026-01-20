@@ -1,83 +1,168 @@
-# Export Helper
+# Export Helper Pro
 
-This add-on is designed to quickly export every object in your blend file to one of 4 formats:
-+ GLB (glTF 2.0 binary)
-+ OBJ
-+ FBX
-+ FBX for Unity
+A Blender add-on for batch exporting objects and collections to FBX, glTF, and OBJ formats with engine-specific presets for Unity, Unreal, and Godot.
 
-It is currently designed to take each object, and centre it in the scene and export, then places the model back. where it was in the scene.
+**Version:** 2.0.0
+**Blender:** 4.2+ / 5.0 compatible
+**Location:** View3D > Sidebar (N) > Export tab
 
-### Limitations
-+ Currently doesn't work well with multi-object models with uncommon origins.
-+ Not tested with animations at the moment.
+## Features
 
-I developed it as part of creating a series of modular game assets and quickly realised it would be quicker to write a little script to export it than do the work manually.  It has grown since then, becoming an add-on with multiple export options.
+### Export Formats
+- **FBX (Unity)** - Optimised settings for Unity import
+- **FBX (Unreal)** - Optimised settings for Unreal Engine
+- **FBX (Generic)** - Standard FBX settings for other applications
+- **glTF/GLB** - glTF 2.0 for Godot, web, and modern engines
+- **OBJ** - Wavefront OBJ with PBR material extensions
 
-If you have any feedback, either on its functionality or codebase please let me know :D
+### Export Modes
+- **Export All Objects** - Export every mesh in the scene as individual files
+- **Export Selected** - Export only selected objects individually
+- **Quick Collection Export** - Export a single collection (with sub-collections) as one file
+- **Multi-Collection Export** - Batch export multiple collections, each as its own file
 
-and if you want to see additional functionality or have a request for a different type of add on let me know as well.
-
-Mikey
+### Smart Features
+- **Viewport Colour Conversion** - Automatically converts Viewport Display colours to Principled BSDF materials during export, ensuring colours appear in your target engine
+- **Sharp Edge Preservation** - Temporarily applies Edge Split modifier to preserve flat shading on marked sharp edges (glTF/OBJ)
+- **Centre Origins** - Optionally moves objects to world origin during export, then restores them
+- **Recursive Collections** - Collection exports include all objects from nested sub-collections
+- **Armature Inclusion** - Automatically includes armatures when exporting rigged meshes (FBX)
+- **Embed Textures** - Option to embed textures inside FBX files for portability
 
 ## Installation
-1. Download .zip file
-1. Open Blender
-1. Edit>Preferences Select the add-on tab
-1. Click Install
-1. Navigate to your download folder and select Export_Helper_1.0.zip
-1. Put a tick in the Export_Helper add on to enable it.
 
-## Using The Export Helper
+1. Download the `.zip` file from the releases
+2. In Blender: **Edit > Preferences > Add-ons > Install**
+3. Navigate to and select the downloaded `.zip` file
+4. Enable "Export Helper Pro" in the add-ons list
 
-I recommend that you create a new scene containing specifically for what you want to export from your blend file.
+## Usage
 
-1. With the 3D viewport open up the side bar ( N Key )
-1. Click oin the "Export Helper" Tab
-1. Select which file type you wna to export
-1. In the same folder your .blend file is a new folder will be created with all of the objects in the scene exported and ready for use externally.
+### Basic Setup
+1. **Save your .blend file** - The add-on creates export folders relative to your file location
+2. Open the sidebar in the 3D View (press **N**)
+3. Select the **Export** tab
 
-**WARNINGS**
-+ *There is no checking for existing files, any thing with the same name will be overwritten.*
+### Export Options
 
-+ *Unity Export - The export process will current apply scale and rotation transforms and will make Object_Data unique for all meshes in the scene*
+| Option | Description |
+|--------|-------------|
+| **Centre Origins** | Temporarily moves objects to world origin for export, then restores their position |
+| **Convert Viewport Colours** | Creates Principled BSDF materials from Viewport Display colours |
+| **Include Armatures** | Includes armatures when exporting rigged meshes (FBX only) |
+| **Embed Textures** | Embeds textures inside FBX files (FBX only) |
+| **Preserve Sharp Edges** | Applies temporary Edge Split modifier for flat shading (glTF/OBJ) |
+| **glTF Format** | Choose between GLB (single binary) or glTF + separate files |
 
+### Export Workflows
 
-## Attribution 4.0 International (CC BY 4.0)
-This is a human-readable summary of (and not a substitute for) the license.
-## You are free to:
-Share — copy and redistribute the material in any medium or format
-Adapt — remix, transform, and build upon the material
-for any purpose, even commercially.
+#### Individual Objects
+1. Select your export format
+2. Click **Export All Objects** to export every mesh, or
+3. Select specific objects and click **Export Selected**
 
-## Under the following terms:
-Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+#### Single Collection
+1. In the "Quick Collection Export" section, select your target collection
+2. The panel shows object count and sub-collection info
+3. Click **Export Collection** - all objects (including nested sub-collections) export as one file
 
-## Resources I found really useful:
+#### Multiple Collections
+1. In the "Multi-Collection Export" section, click **+** to add collections
+2. Or click the preset icon to add all scene collections automatically
+3. Toggle checkboxes to enable/disable individual collections
+4. Click **Export X Collections** to batch export
 
-### Blender Manual
+### Open Export Folder
+Click **Open Export Folder** to open the output directory in your file browser.
 
-https://docs.blender.org/manual/en/latest/advanced/scripting/addon_tutorial.html#
-https://docs.blender.org/manual/en/latest/advanced/scripting/addon_tutorial.html#your-first-add-on
+## Output Structure
 
-### Reading List and Questions:
-https://wiki.blender.org/wiki/Reference/Release_Notes/2.80/Python_API/Addons
-https://wiki.blender.org/wiki/Reference/Release_Notes/2.80/Python_API
-https://docs.blender.org/api/current/bpy.utils.html
-https://devtalk.blender.org/t/add-on-panel-missing-from-active-tool-workspace-settings/7349
-https://blender.stackexchange.com/questions/106203/scripting-error-using-view3d/106319
-https://blender.stackexchange.com/questions/81388/center-cursor-in-python-script
-https://blender.stackexchange.com/questions/5784/why-does-operators-bl-idname-have-to-contain-1-dot
+Exports are organised in a folder next to your .blend file:
 
-https://blender.stackexchange.com/questions/57306/how-to-create-a-custom-ui
-https://blender.stackexchange.com/questions/8699/what-ui-would-work-for-choosing-from-a-long-long-list
-https://blender.stackexchange.com/questions/132825/python-selecting-object-by-name-in-2-8
-https://treyhunner.com/2016/04/how-to-loop-with-indexes-in-python/#Looping_in_Python
-https://automatetheboringstuff.com/chapter8/
-https://blender.stackexchange.com/questions/7085/error-in-addon-wm-operator-invoke-invalid-operator-call
-https://blender.stackexchange.com/questions/2545/quick-way-to-get-current-opened-filename-in-a-script
+```
+yourfile.blend
+yourfile-export/
+├── FBX_Unity/      # Unity FBX exports
+├── FBX_Unreal/     # Unreal FBX exports
+├── FBX/            # Generic FBX exports
+├── GLB/            # glTF binary exports
+├── glTF/           # glTF separate exports
+└── OBJ/            # OBJ exports
+```
 
-### YouTube:
+Each object or collection is exported with its Blender name as the filename.
 
-https://www.youtube.com/watch?v=uahfuypQQ04
+## Format-Specific Settings
 
+### FBX (Unity)
+- Face-based smoothing
+- Tangent space enabled
+- No leaf bones (cleaner skeleton hierarchy)
+- Y-up, -Z forward axis
+
+### FBX (Unreal)
+- Edge-based smoothing
+- Mesh edges preserved
+- Tangent space enabled
+- No leaf bones
+- Y-up, -Z forward axis
+
+### FBX (Generic)
+- Face-based smoothing
+- Baked transforms
+- Standard settings for general use
+
+### glTF/GLB
+- Applied modifiers
+- Tangents and normals exported
+- Y-up orientation
+- GLB: Single binary file with embedded textures
+- glTF: Separate .gltf, .bin, and texture files
+
+### OBJ
+- PBR material extensions enabled
+- Applied modifiers
+- UVs and normals exported
+- Y-up, -Z forward axis
+
+## Viewport Colour Workflow
+
+This feature is particularly useful for game asset workflows where you:
+
+1. Model objects using simple Viewport Display colours (no shader nodes)
+2. Want those colours to appear in your game engine
+
+**How it works:**
+- Materials without Principled BSDF nodes are temporarily converted during export
+- The Viewport Display colour becomes the Base Colour
+- Original materials are restored after export
+
+## Sharp Edge Workflow
+
+For hard-surface models with flat shading:
+
+1. In Edit Mode, select edges you want sharp
+2. **Edge > Mark Sharp**
+3. Enable "Preserve Sharp Edges" in the export panel
+4. Export to glTF or OBJ
+
+The add-on temporarily adds an Edge Split modifier (using marked sharp edges only), exports, then removes it.
+
+## Compatibility
+
+- **Blender 4.2+** - Fully supported
+- **Blender 5.0** - Fully supported
+- **Older versions** - May work but untested; some features require 4.x APIs
+
+## Credits
+
+- **Michael Bridges** - Original Export Helper add-on
+- **Embark Studios** - Inspiration from blender-tools
+
+## Licence
+
+MIT Licence
+
+---
+
+For issues or feature requests, visit: https://github.com/mdbridges1/Export_Helper

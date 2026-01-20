@@ -1,24 +1,67 @@
+# SPDX-License-Identifier: MIT
+# Export Helper Pro - Batch export for FBX, glTF, OBJ with engine presets
+
 bl_info = {
-    "name" : "Export Helper",
-    "author" : "Michael Bridges",
-    "description" : "Will automatically export all objects in a scene to .glb, fbx and obj format. \nThese files will export into their own subfolders with the .blend file. \n Know Issues: \nNo check whether the .blend file is saved, if it isnt export will fail.\nNo consideration for other .blend file in the same folder is taken.  Duplicate objectnames will overwrite existing data.",
-    "blender" : (2, 80, 0),
-    "version" : (1, 1, 0),
-    "location" : "View 3D > Sidebar > Export Helper",
-    "warning" : "",
-    "category" : "Export"
-} 
+    "name": "Export Helper Pro",
+    "author": "Michael Bridges (original Export_Helper), Embark Studios (inspiration), Combined Edition",
+    "version": (2, 0, 0),
+    "blender": (4, 2, 0),
+    "location": "View3D > Sidebar > Export Helper",
+    "description": "Batch export objects/collections to FBX, glTF, OBJ with presets for Unity, Unreal, and Godot",
+    "warning": "",
+    "doc_url": "https://github.com/mdbridges1/Export_Helper",
+    "category": "Import-Export",
+}
 
 import bpy
+from bpy.props import PointerProperty
 
-from . export_helper_op import EXPORTOBJ_OT_Operator, EXPORTFBX_OT_Operator, EXPORTUNITYFBX_OT_Operator
-from . export_helper_gltf_op import EXPORTGLB_OT_Operator, EXPORTGLBALL_OT_Operator
-from . export_helper_panel import EXPORT_PT_Panel
+from .properties import (
+    ExportCollectionItem,
+    ExportHelperProperties,
+)
+from .operators import (
+    EXPORT_HELPER_OT_export_all,
+    EXPORT_HELPER_OT_export_selected,
+    EXPORT_HELPER_OT_export_collection,
+    EXPORT_HELPER_OT_add_collection,
+    EXPORT_HELPER_OT_remove_collection,
+    EXPORT_HELPER_OT_add_all_collections,
+    EXPORT_HELPER_OT_export_multi_collections,
+    EXPORT_HELPER_OT_open_export_folder,
+)
+from .panel import (
+    EXPORT_HELPER_UL_collections,
+    EXPORT_HELPER_PT_main_panel,
+)
 
-classes = (EXPORTGLB_OT_Operator, EXPORTGLBALL_OT_Operator,
-    EXPORTOBJ_OT_Operator, 
-    EXPORTFBX_OT_Operator, 
-    EXPORTUNITYFBX_OT_Operator, 
-    EXPORT_PT_Panel)
+classes = (
+    ExportCollectionItem,
+    ExportHelperProperties,
+    EXPORT_HELPER_OT_export_all,
+    EXPORT_HELPER_OT_export_selected,
+    EXPORT_HELPER_OT_export_collection,
+    EXPORT_HELPER_OT_add_collection,
+    EXPORT_HELPER_OT_remove_collection,
+    EXPORT_HELPER_OT_add_all_collections,
+    EXPORT_HELPER_OT_export_multi_collections,
+    EXPORT_HELPER_OT_open_export_folder,
+    EXPORT_HELPER_UL_collections,
+    EXPORT_HELPER_PT_main_panel,
+)
 
-register, unregister = bpy.utils.register_classes_factory(classes)
+
+def register():
+    for cls in classes:
+        bpy.utils.register_class(cls)
+    bpy.types.Scene.export_helper_props = PointerProperty(type=ExportHelperProperties)
+
+
+def unregister():
+    for cls in reversed(classes):
+        bpy.utils.unregister_class(cls)
+    del bpy.types.Scene.export_helper_props
+
+
+if __name__ == "__main__":
+    register()
